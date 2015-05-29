@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visit_date: 2015-05-26
+  height_in_cm: 9.99
+  weight_in_kg: 9.99
+  post_op: false
+
+two:
+  visit_date: 2015-05-26
+  height_in_cm: 9.99
+  weight_in_kg: 9.99
+  post_op: false

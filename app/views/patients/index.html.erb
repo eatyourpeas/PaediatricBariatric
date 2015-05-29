@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="panel-title">
+			<h1>All Patients</h1>
+		</div>
+	</div>
+<table class="table">
+	<tr>
+		<th>First Name</th>
+		<th>Second Name</th>
+		<th>Sex</th>
+		<th>NHS Number</th>
+		<th>Date of Birth</th>
+		<th>Preop BMI (kg/m2)</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	<% @patients.each do |patient| %>
+		<tr>
+			<td><%= patient.first_name %></td>
+			<td><%= patient.second_name %></td>
+			<td><%= patient.sex %></td>
+			<td><%= patient.nhs_number %></td>
+			<td><%= patient.date_of_birth %></td>
+			<td><%= patient.preop_bmi %></td>
+			<td><%= link_to 'Show', patient_path(patient), class: 'btn btn-primary btn-xs' %></td>
+			<td><%= link_to 'Edit', edit_patient_path(patient), class: 'btn btn-info btn-xs' %></td>
+			<td><%= link_to 'Destroy', patient_path(patient), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+		</tr>
+	<% end %>
+</table>
+<i class="glyphicon glyphicon-plus"></i> <%= link_to ' Add New Patient', new_patient_path,class: 'btn btn-info btn-xs' %>
+</div>

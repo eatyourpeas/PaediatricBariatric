@@ -1,0 +1,25 @@
+<head>
+	<%= favicon_link_tag 'paediatricbariatricfavicon.png' %>
+  <title>PaediatricBariatric</title>
+	<%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+<div class="center jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class = "col-md-4"><%= image_tag 'child-weight.jpg' %></div>
+				<div class = "col-md-8">
+        			<h1>Welcome to <br>
+        				Paediatric Bariatric<br>
+        			<small>A national resource for Paediatric Bariatric Teams</small></h1>
+        		</div>
+        </div>
+		
+	</div>
+</div>
+<div class="container">
+	<div class="col-md-4"></div>
+	<div class="col-md-4"><%= yield %></div>
+</div>

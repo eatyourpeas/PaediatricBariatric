@@ -1,0 +1,245 @@
+<body>
+    
+    	
+	     	<div class="container-fluid">
+	     			<div class="row">
+	     				
+	     				
+	     				<div class="col-md-3" id="patient-side-panel">
+          
+							<p>
+								<strong>First Name:</strong>
+								<%= @patient.first_name %>
+							</p>
+
+							<p>
+								<strong>Second Name:</strong>
+								<%= @patient.second_name %>
+							</p>
+
+							<p>
+								<strong>Sex:</strong>
+								<%= @patient.sex %>
+							</p>
+
+							<p>
+								<strong>NHS Number:</strong>
+								<%= @patient.nhs_number %>
+							</p>
+
+							<p>
+								<strong>Local Hospital Number:</strong>
+								<%= @patient.local_hospital_number %>
+							</p>
+
+							<p>
+								<strong>Date Of Birth:</strong>
+								<%= @patient.date_of_birth %>
+							</p>
+
+							<p>
+								<strong>Preop BMI:</strong>
+								<%= @patient.preop_bmi %>
+							</p>
+
+							<p>
+								<strong>Postcode:</strong>
+								<%= @patient.post_code %>
+							</p>
+
+							<p>
+								<strong>English as a foreign language:</strong>
+								<%= @patient.english_as_foreign_language %>
+							</p>
+
+							<p>
+								<strong>Carer's Allowance:</strong>
+								<%= @patient.carers_allowance %>
+							</p>
+
+							<p>
+								<strong>Mother's Occupation:</strong>
+								<%= @patient.maternal_occupation %>
+							</p>
+
+							<p>
+								<strong>Father's Occupation:</strong>
+								<%= @patient.paternal_occupation %>
+							</p>
+
+							<p>
+								<strong>Mother's BMI:</strong>
+								<%= @patient.maternal_bmi %>
+							</p>
+
+							<p>
+								<strong>Father's BMI:</strong>
+								<%= @patient.paternal_bmi %>
+							</p>
+							<%= link_to 'Edit', edit_patient_path(@patient), class: 'btn btn-success' %> | 
+							<%= link_to 'Back', patients_path, class: 'btn btn-primary' %> 
+						
+					
+					</div>
+						<!-- side bar ends here -->
+						<div class = "col-md-9" id="main-detail-panel">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="panel panel-success" id="visits-wrapper">
+						       					<div class="panel-heading">
+						       						<div class="panel-title"><h4>Visits</h4></div>
+						       					</div>
+												<div class="panel-body">
+													<% if @patient.visits.length > 0 %>
+														<table class="table">
+															
+															<thead>
+																<th><strong>Visit Date</strong></th>
+																<th><strong>Decimal Age</strong></th>
+																<th><strong>Height(cm)</strong></th>
+																<th><strong>Weight(kg)</strong></th>
+																<th><strong>BMI (kg/m2)</strong></th>
+																<th><strong>BMI SDS</strong></th>
+																<th><strong>Post-op status</strong></th>
+															</thead>
+															<% @patient.visits.each do |visit| %>
+															<tbody>
+																<td><%= visit.visit_date %></td>
+																<td><%= visit.calculated_decimal_age %></td>
+																<td><%= visit.height_in_cm %></td>
+																<td><%= visit.weight_in_kg %></td>
+																<td><%= visit.calculated_bmi %></td>
+																<td><%= visit.calculated_bmi_sds %></td>
+																<td><%= visit.post_op %></td>
+																<td><%= link_to 'Remove Visit', [visit.patient, visit],
+										               method: :delete,
+										               data: { confirm: 'Are you sure?' },class: 'btn btn-danger btn-xs' %></td>
+															<% end %>
+															</tbody>
+														</table>
+													<% else %>
+														<%= 'No records found' %>
+													<% end %>
+												</div>
+											</div>
+										</div>
+										
+											<div class="col-md-12">
+												<div class="panel panel-info" id="comorbidities-wrapper">
+													<div class="panel-heading">
+														<div class="panel-title"><h4>Comorbidities</h4></div>
+													</div>
+													<div class="panel-body">
+														<% if @patient.complications.length > 0 %>	
+															<table class:"table">
+																<% @patient.complications.each do |complication| %>
+																<thead>
+																	<th><strong>Complication</strong></th>
+																	<th><strong>Date Identified</strong></th>
+																	<th><strong>Notes</strong></th>
+																</thead>
+																<tbody>
+																	<td><%= complication.complication %></td>
+																	<td><%= complication.complication_date %></td>
+																	<td><%= complication.note %></td>
+																	<td><%= link_to 'Remove Comorbidity', [complication.patient, complication],
+											               method: :delete,
+											               data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+																<% end %>
+																</tbody>
+															</table>
+														<% else %>
+															<%= 'No records found' %>
+														<% end %>
+													</div>
+												</div>
+											</div>
+										
+											<div class="col-md-12">
+												<div class="panel panel-warning" id="operations-wrapper">
+													<div class="panel-heading">
+														<div class="panel-title"><h4>Operations</h4></div>
+													</div>
+													<div class="panel-body">
+														<% if @patient.operations.length > 0 %>	
+															<table class:"table">
+																<% @patient.operations.each do |operation| %>
+																<thead>
+																	<th><strong>Operation</strong></th>
+																	<th><strong>Date Performed</strong></th>
+																	<th><strong>Notes</strong></th>
+																	<th><strong>Complication</strong></th>
+																</thead>
+																<tbody>
+																	<td><%= operation.operation %></td>
+																	<td><%= operation.operation_date %></td>
+																	<td><%= operation.note %></td>
+																	<td><%= operation.complication %></td>
+																	<td><%= link_to 'Remove Operation', [operation.patient, operation],
+											               method: :delete,
+											               data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+																<% end %>
+																</tbody>
+															</table>
+														<% else %>
+															<%= 'No records found' %>
+														<% end %>
+													</div>
+												</div>
+											</div>
+
+										<!--three forms start here -->
+									<div class="col-md-12">
+										<div id="three-forrms-wrapper">
+											<div class="row">
+													<div class="col-md-4">
+														<div class="well">
+														<h3>Add a Visit</h3>
+															
+															<%= simple_form_for([@patient, @patient.visits.build]) do |f| %>
+
+																<%= f.input :visit_date, as: :date %>
+																<%= f.input :height_in_cm %>
+																<%= f.input :weight_in_kg %>
+																<%= f.input :post_op, as: :boolean  %>
+															    <%= f.button :submit %>
+															<% end %>
+														</div>
+													</div>
+											
+
+												<div class="col-md-4">
+													<div class="well">
+													<h3>Add a Comorbidity</h3>
+													<%= simple_form_for([@patient, @patient.complications.build]) do |f| %>
+
+														<%= f.input :complication %>
+														<%= f.input :complication_date, as: :date %>
+														<%= f.input :note %>
+													    <%= f.button :submit %>
+													<% end %>
+												</div>
+												</div>
+												
+												<div class="col-md-4">
+													<div class="well">
+													<h3>Add an Operation</h3>
+													<%= simple_form_for([@patient, @patient.operations.build]) do |f| %>
+
+														<%= f.input :operation %>
+														<%= f.input :operation_date, as: :date %>
+														<%= f.input :note %>
+														<%= f.input :complication %>
+													    <%= f.button :submit %>
+													<% end %>
+												</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									</div>
+							
+	</div>
+
+</body>

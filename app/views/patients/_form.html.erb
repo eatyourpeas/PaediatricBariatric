@@ -1,0 +1,40 @@
+
+<div class="container" class:"col-xs-6">
+	<%= simple_form_for @patient do |f| %>
+		<% if @patient.errors.any? %>
+				<div id="error_explanation">
+					<h2>
+						<%= pluralize(@patient.errors.count, "error") %> prohibited this article from being saved:
+					</h2>
+					<ul>
+						<% @patient.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+		<% end %>
+			<legend>New Patient Details</legend>
+
+			
+			
+				<%= f.input :first_name, label: "First Name:" %>
+				<%= f.input :second_name, label: "Second Name:" %>
+				<%= f.input :sex, inline_label:"Sex:" %>
+				<%= f.input :nhs_number %>
+				<%= f.input :local_hospital_number %>
+				<%= f.input :post_code %>
+				<%= f.input :date_of_birth, as: :date %>
+				<%= f.input :preop_bmi %>
+				<%= f.input :paternal_bmi %>
+				<%= f.input :paternal_bmi %>			
+				<%= f.select :ethnicity, options_for_select([['Indian','A1'],['Pakistani','A2'],['Bangladeshi','A3'],['Any other Asian background','A9'],['Caribbean','B1'],['African','B2'],['Any other Black background', 'B9'],['White and Black Caribbean', 'M1'],['White and Black African','M2'],['White and Asian','M3'],['Any other mixed background','M9'],['Chinese','O1'],['Any other ethnic group','O9'],['White British','W1'],['Irish','W2'],['Any other White background','W9'], ['The person declined to define their ethnicity','N4']]) %>
+				<%= f.input :english_as_foreign_language, as: :boolean %>
+				<%= f.input :carers_allowance, as: :boolean %>
+				<%= f.input :preop_bmi %>
+				<%= f.input :maternal_occupation %>
+				<%= f.input :paternal_occupation %>
+				<%= f.button :submit %>
+			
+	<% end %>
+</div>
+
