@@ -30,11 +30,18 @@ gem 'spring',        group: :development
 gem 'simple_form'
 
 gem 'devise'
+
+gem 'puma'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'elastic-beanstalk'
+gem 'rails_12factor'
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'twitter-bootstrap-rails'
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
